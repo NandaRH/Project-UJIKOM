@@ -1,0 +1,117 @@
+### REGISTER USER
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "full_name": "Admin 1612",
+  "email": "admin@1612coffe.com",
+  "password": "admin123"
+}
+
+### LOGIN USER
+POST http://localhost:5000/api/auth/login-admin
+Content-Type: application/json
+
+{
+  "email": "admin@1612coffe.com",
+  "password": "admin123"
+}
+
+### Nyimpan Harga Dasar
+POST http://localhost:5000/api/services
+Content-Type: application/json
+
+{
+  "name": "Jasa Roasting Kopi 1612",
+  "description": "Melayani roasting biji kopi Arabika & Robusta mulai dari 1kg hingga 50kg.",
+  "beanType": ["arabika", "robusta"],
+  "roastProfiles": ["lite", "medium", "dark"],
+  "pricePerKg": 35000,
+  "imageUrl": "https://example.com/roast.jpg"
+}
+
+###Ngetest Form
+POST http://localhost:5000/api/services/calculate
+Content-Type: application/json
+
+{
+  "serviceId": "68efc422febefd41cf3e2c0a",
+  "weight": 2.5,
+  "beanType": "arabika",
+  "roastProfile": "medium"
+}
+
+###Tambah Produk
+POST http://localhost:5000/api/products/bulk
+Content-Type: application/json
+
+[
+  {
+    "name": "Arabika Natural",
+    "beanType": "arabika",
+    "process": "Natural",
+    "price": 90000,
+    "stock": 100,
+    "imageUrl": ""
+  },
+  {
+    "name": "Robusta",
+    "beanType": "robusta",
+    "process": "Natural",
+    "price": 75000,
+    "stock": 100,
+    "imageUrl": ""
+  },
+  {
+    "name": "Arabika Fullwash",
+    "beanType": "arabika",
+    "process": "Fullwash",
+    "price": 95000,
+    "stock": 100,
+    "imageUrl": ""
+  },
+  {
+    "name": "Arabika Honey",
+    "beanType": "arabika",
+    "process": "Honey",
+    "price": 97000,
+    "stock": 100,
+    "imageUrl": ""
+  },
+  {
+    "name": "Arabika Eksperimental",
+    "beanType": "arabika",
+    "process": "Eksperimental",
+    "price": 110000,
+    "stock": 50,
+    "imageUrl": ""
+  }
+]
+
+### Test 1: Input alamat biasa
+POST http://localhost:5000/api/shipping/calculate
+Content-Type: application/json
+
+{
+  "orderId": "ORD-TEST-001",
+  "customerAddress": "Jl. Tomang Raya No.11, Jakarta Barat, DKI Jakarta 11440",
+  "weight": 3.5,
+  "type": "cargo"
+}
+
+### Test 2: Input langsung koordinat (lebih cepat)
+POST http://localhost:5000/api/shipping/calculate
+Content-Type: application/json
+
+{
+  "orderId": "ORD-TEST-002",
+  "customerAddress": "-6.184923, 106.789103", 
+  "weight": 3.5,
+  "type": "cargo"
+}
+
+### Tracking shipment
+GET http://localhost:5000/api/shipping/track/ORD-TEST-001
+
+
+

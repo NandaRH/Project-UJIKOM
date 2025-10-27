@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --coffee: #65381d;
+  --cream: #fffaf3;
+  --font-aesthetic: 'Playfair Display', serif;
+}
+
+body {
+  @apply bg-[var(--cream)] text-[#2c1a0e];
+  font-family: "Inter", sans-serif;
+}
